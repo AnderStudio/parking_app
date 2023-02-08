@@ -1,11 +1,17 @@
 // Importing modules
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { Routes, Route, NavLink, HashRouter } from "react-router-dom";
-import FindCarPage from './Component/FindCarPage/FindCarPage';
+import { Link, Routes, Route, NavLink, HashRouter } from "react-router-dom";
+import FindCarPage from './Component/FindCarSelectionPage/FindCarSelectionPage';
+import FindCarPageA from './Component/FindCarSelectAPage/FindCarSelectAPage';
+import FindCarPageB from './Component/FindCarSelectBPage/FindCarSelectBPage';
+import FindCarPageC from './Component/FindCarSelectCPage/FindCarSelectCPage';
+import FindCarPageD from './Component/FindCarSelectDPage/FindCarSelectDPage';
 import ParkingPage from './Component/ParkingPage/ParkingPage';
 import ReservePage from './Component/ReservePage/ReservePage';
+import ReserveBookPage from './Component/ReserveBookPage/ReserveBookPage';
 import Footer from './Component/Footer/Footer';
+
 
 function App() {
 	// usestate for setting a javascript
@@ -37,14 +43,17 @@ function App() {
 	return (
 		<div className="App">
 			<header className="App-header d-flex flex-column justify-content-between">
-				<HashRouter>
-					<Routes>
-						<Route exact="true" path="/" element={<ParkingPage />}> </Route>
-						<Route path="/FindCar" element={<FindCarPage />}> </Route>
-						<Route path="/Reserve" element={<ReservePage />}> </Route>
-					</Routes>
-					<Footer className = "align-self-stretch"/>
-				</HashRouter>
+				<Routes>
+					<Route exact="true" path="/" element={<ParkingPage />}> </Route>
+					<Route path="/FindCar" element={<FindCarPage />}> </Route>
+					<Route path="/Reserve" element={<ReservePage />}> </Route>
+					<Route path="/FindCarA" element={<FindCarPageA />} > </Route>
+					<Route path="/FindCarB" element={<FindCarPageB />} > </Route>
+					<Route path="/FindCarC" element={<FindCarPageC />} > </Route>
+					<Route path="/FindCarD" element={<FindCarPageD />} > </Route>
+					<Route path="/ReserveBook" element={<ReserveBookPage />}> </Route>
+				</Routes>
+				<Footer className="align-self-stretch" />
 			</header>
 		</div>
 	);

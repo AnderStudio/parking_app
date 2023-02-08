@@ -2,14 +2,14 @@
 import React, { useState, useEffect, Component} from "react";
 import "../../App.css";
 
-class FindCarPage extends Component {
+class FindCarSelectBPage extends Component {
   render(){
     return (
       <div>
-          <h1>Find My Car</h1>
+          <h1>B 區的車位剩餘</h1>
       </div>
     );
   }
 }
 
-export default FindCarPage;
+export default FindCarSelectBPage;
