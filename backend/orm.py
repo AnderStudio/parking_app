@@ -15,7 +15,7 @@ def getconn() -> pymysql.connections.Connection:
         "pymysql",
         user="root",
         password="b92dXKDT",
-        db="tsmchack2023-bsid-mysql-db"
+        db="parking_app_db"
     )
     return conn
 
