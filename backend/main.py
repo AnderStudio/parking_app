@@ -9,8 +9,8 @@ from orm import query_all_parking, insert_parking
 
 app = FastAPI()
 
-
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/zhouyuhong/Desktop/TSMC/bsid-user-group3-sa-key.json"
+path = str(os.getcwd())
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = f'{path}/credential.json'
 storage_client = storage.Client()
 
 # Route for seeing a data
