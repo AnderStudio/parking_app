@@ -1,6 +1,11 @@
 // Importing modules
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import { Routes, Route, NavLink, HashRouter } from "react-router-dom";
+import FindCarPage from './Component/FindCarPage/FindCarPage';
+import ParkingPage from './Component/ParkingPage/ParkingPage';
+import ReservePage from './Component/ReservePage/ReservePage';
+import Footer from './Component/Footer/Footer';
 
 function App() {
 	// usestate for setting a javascript
@@ -31,14 +36,15 @@ function App() {
 
 	return (
 		<div className="App">
-			<header className="App-header">
-				<h1>React and flask</h1>
-				{/* Calling a data from setdata for showing */}
-				<p>{data.name}</p>
-				<p>{data.age}</p>
-				<p>{data.date}</p>
-				<p>{data.programming}</p>
-
+			<header className="App-header d-flex flex-column justify-content-between">
+				<HashRouter>
+					<Routes>
+						<Route exact="true" path="/" element={<ParkingPage />}> </Route>
+						<Route path="/FindCar" element={<FindCarPage />}> </Route>
+						<Route path="/Reserve" element={<ReservePage />}> </Route>
+					</Routes>
+					<Footer className = "align-self-stretch"/>
+				</HashRouter>
 			</header>
 		</div>
 	);
