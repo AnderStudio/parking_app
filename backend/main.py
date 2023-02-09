@@ -6,11 +6,12 @@ from google.cloud import storage
 from google.cloud import vision
 from models import Parking
 from orm import query_all_parking, insert_parking
+from parking_lot import query_all_parking_spaces
 
 app = FastAPI()
 
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/zhouyuhong/Desktop/TSMC/bsid-user-group3-sa-key.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'C:/Users/Eric Jian/Desktop/CK/data/bsid-user-group3-sa-key.json'
 storage_client = storage.Client()
 
 # Route for seeing a data
@@ -67,3 +68,6 @@ def create_parking(parking_info: Parking):
 
 # run server
 # uvicorn main:app --reload --host 0.0.0.0 --port 8000
+@app.get("/parking_spaces")
+def query_parking_spaces():
+    return query_all_parking_spaces()
