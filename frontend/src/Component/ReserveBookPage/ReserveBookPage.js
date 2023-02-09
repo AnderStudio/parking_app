@@ -8,9 +8,31 @@ class ReserveBookPage extends Component {
     return (
       <div>
         <h1>預約</h1>
+        <div class="btn-group">
+          <button type="button" className="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            選擇時段
+          </button>
+          <ul className="dropdown-menu">
+            <li><a className="dropdown-item" href="#">7:00 ~ 8:00</a></li>
+            <li><a className="dropdown-item" href="#">8:00 ~ 9:00</a></li>
+            <li><a className="dropdown-item" href="#">9:00 ~ 10:00</a></li>
+            <li><a className="dropdown-item" href="#">10:00 ~ 11:00</a></li>
+          </ul>
+        </div>
+        <div class="btn-group">
+          <button type="button" className="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            選擇區域
+          </button>
+          <ul className="dropdown-menu">
+            <li><a className="dropdown-item" href="#">Ａ</a></li>
+            <li><a className="dropdown-item" href="#">Ｂ</a></li>
+            <li><a className="dropdown-item" href="#">Ｃ</a></li>
+            <li><a className="dropdown-item" href="#">Ｄ</a></li>
+          </ul>
+        </div>
         <nav className="d-flex flex-column">
-          <Link to="/ReserveBook">
-            <button className="e-button" type="primary">新增預約</button>
+          <Link to="/Reserve">
+            <button className="e-button" type="primary">確認</button>
           </Link>
         </nav>
       </div>
