@@ -10,8 +10,8 @@ from parking_lot import query_all_parking_spaces
 
 app = FastAPI()
 
-
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'C:/Users/Eric Jian/Desktop/CK/data/bsid-user-group3-sa-key.json'
+path = str(os.getcwd())
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = f'{path}/credential.json'
 storage_client = storage.Client()
 
 # Route for seeing a data

@@ -11,11 +11,11 @@ connector = Connector()
 # function to return the database connection
 def getconn() -> pymysql.connections.Connection:
     conn: pymysql.connections.Connection = connector.connect(
-        "your_project:zone:db_cluster",
+        "tsmchack2023-bsid-grp3:asia-east1:tsmchack2023-bsid-mysql-db",
         "pymysql",
-        user="user_name",
-        password="password",
-        db="db_name"
+        user="root",
+        password="b92dXKDT",
+        db="parking_app_db"
     )
     return conn
 

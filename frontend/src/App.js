@@ -11,6 +11,7 @@ import ParkingPage from './Component/ParkingPage/ParkingPage';
 import ReservePage from './Component/ReservePage/ReservePage';
 import ReserveBookPage from './Component/ReserveBookPage/ReserveBookPage';
 import Footer from './Component/Footer/Footer';
+import MapPage from './Component/MapPage/MapPage';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
 					<Route path="/FindCarC" element={<FindCarPageC />} > </Route>
 					<Route path="/FindCarD" element={<FindCarPageD />} > </Route>
 					<Route path="/ReserveBook" element={<ReserveBookPage />}> </Route>
+					<Route path="/MapPage" element={<MapPage />}> </Route>
 				</Routes>
 				<Footer className="align-self-stretch" />
 
