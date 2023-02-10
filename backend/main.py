@@ -72,7 +72,10 @@ def create_parking(parking_info: Parking):
     return {"result": "success"}
 
 # run server
-# uvicorn main:app --reload --host 0.0.0.0 --port 8000
+# uvicorn main:app --reload --host 127.0.0.1 --port 8000
+
+
+# parking
 @app.get("/parking_spaces")
 def query_parking_spaces():
     return query_all_parking_spaces()
@@ -80,6 +83,18 @@ def query_parking_spaces():
 @app.get("/A_parking_spaces")
 def query_A_parking_spaces():
     return query_A_spaces()
+
+@app.get("/B_parking_spaces")
+def query_B_parking_spaces():
+    return query_B_spaces()
+
+@app.get("/C_parking_spaces")
+def query_C_parking_spaces():
+    return query_C_spaces()
+
+@app.get("/D_parking_spaces")
+def query_D_parking_spaces():
+    return query_D_spaces()
 
 @app.get("/parking_remain_spaces")
 def query_remain_spaces():
@@ -92,3 +107,7 @@ def query_remain_spaces():
 @app.get("/reservation/{userid}")
 def query_reservation(userid: str):
     return get_parking_lot_reservation(userid)
+
+@app.get("/reservation")
+def query_reservation_vip():
+    return get_parking_lot_reservation(2)
