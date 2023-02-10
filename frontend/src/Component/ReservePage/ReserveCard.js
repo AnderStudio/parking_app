@@ -13,7 +13,7 @@ const ReserveCard = (props) => {
                     <p className="card-text fs-6 fw-light text-black-50 mb-0">預計自</p>
                     <p className="card-text fs-5">{props.eff_start_time}</p>
                     <p className="card-text fs-6 fw-light text-black-50 mb-0">停放至</p>
-                    <p className="card-text fs-5">{props.eff_start_time}</p>
+                    <p className="card-text fs-5">{props.eff_end_time}</p>
                 </div>
             </div>
         </div>

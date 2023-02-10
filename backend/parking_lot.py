@@ -115,6 +115,36 @@ def query_D_spaces():
             
     return {"D": r}
 
+def get_my_car_parking_space(target):
+    with pool.connect() as db_conn:
+        result = db_conn.execute("SELECT * from parking_app_db.parking_spaces").fetchall()
+        
+        print(type(target))
+        print(target)
+        # Do something with the results
+        for row in result:
+            #print(row[5])
+            if row[3] != None:
+                print(type(row[3]))
+            if str(row[3]) == str(target):
+                return ({
+                    #"id": row[0],
+                    "parking_lot": row[1],
+                    "space_num": row[2],
+                    "current_license_num": row[3],
+                    #"vip_only": row[4],
+                    "is_empty": row[5]
+                })
+    
+    return ({
+        #"id": row[0],
+        "parking_lot": "None",
+        "space_num": "None",
+        "current_license_num": target,
+        #"vip_only": row[4],
+        "is_empty": -1 # -1 means target license_num not found
+    })
+
 def get_remain_parking_spaces():
     
     res = query_all_parking_spaces()

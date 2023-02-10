@@ -32,7 +32,7 @@ const ReservePage = () => {
       <h2>已預約 車位-時段</h2>   
       <ReserveCardList cards={cards} />
       <Link to="/ReserveBook">
-      <button className="btn btn-danger btn-lg mx-3 my-3">+ 新稱預約</button>
+      <button className="btn btn-danger btn-lg mx-3 my-3">+ 新增預約</button>
       </Link>
     </div>
   );
