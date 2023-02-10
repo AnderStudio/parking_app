@@ -24,7 +24,7 @@ storage_client = storage.Client()
 def get_time():
 	# Returning an api for showing in reactjs
     r = {
-		'Name':"apple",
+		'Name':"MoeAI",
 		"Age":"22222222222222",
 		"Date":"kokwodwodkwokd",
 		"programming":"python"

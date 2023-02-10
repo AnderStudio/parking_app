@@ -8,6 +8,7 @@ const CardList = (props) => {
         {props.cards.map((card, index) => {
           return <ReserveCard
             key={card.id}
+            id={card.id}
             parking_space={card.parking_space}
             license_num={card.license_num}
             eff_start_time={card.eff_start_time}
