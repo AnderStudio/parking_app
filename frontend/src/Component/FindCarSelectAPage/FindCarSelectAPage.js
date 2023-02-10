@@ -29,7 +29,7 @@ function FindCarSelectAPage() {
   
   var empty_spaces = 0;
   for(let i = 0; i < 100; i++){
-    if(data.A_parking_lot != null && data.A_parking_lot[i]["is_empty"] == true)
+    if(data.A_parking_lot[i]["is_empty"] == true)
       empty_spaces += 1;
   }
   return (

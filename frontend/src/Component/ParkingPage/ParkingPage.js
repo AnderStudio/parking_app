@@ -27,7 +27,7 @@ function ParkingPage() {
 			})
 		);
 	}, []);
-    console.log(data.A);
+    //console.log(data.A);
     return (
       <div>
         <h1>Parking</h1>
