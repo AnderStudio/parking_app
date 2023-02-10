@@ -52,6 +52,6 @@ def get_remain_parking_spaces():
     remain_B_spaces = len(parking_lot_df.loc[(parking_lot_df["parking_lot"] == "B") & (parking_lot_df["is_empty"] == True)])
     remain_C_spaces = len(parking_lot_df.loc[(parking_lot_df["parking_lot"] == "C") & (parking_lot_df["is_empty"] == True)])
     remain_D_spaces = len(parking_lot_df.loc[(parking_lot_df["parking_lot"] == "D") & (parking_lot_df["is_empty"] == True)])
-    parking_lot_list = [{"A": remain_A_spaces, "B": remain_B_spaces, "C": remain_C_spaces, "D": remain_D_spaces}]
+    parking_lot_list = {"A": remain_A_spaces, "B": remain_B_spaces, "C": remain_C_spaces, "D": remain_D_spaces}
 
     return parking_lot_list

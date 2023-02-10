@@ -57,11 +57,15 @@ function App() {
 					<Route path="/MapPage" element={<MapPage />}> </Route>
 					<Route exact="true" path="/LoginPage" element={<LoginPage />}> </Route>
 				</Routes>
+<<<<<<< HEAD
 				<p>
 					{
 						data.name
 					}
 				</p>
+=======
+				<p>{data.name}</p>
+>>>>>>> 15f941f944595396ec9eba6963e3b90d773b944e
 				<Footer className="align-self-stretch" />
 			</header>
 		</div>

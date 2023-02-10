@@ -8,7 +8,7 @@ def get_user_account():
         admin,
         vip
     }
-"proxy": "http://127.0.0.1:5000/",
+#"proxy": "http://127.0.0.1:5000/",
 #base
 def get_user_list():
     _get(){
