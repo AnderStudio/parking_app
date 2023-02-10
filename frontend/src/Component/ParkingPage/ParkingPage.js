@@ -34,16 +34,44 @@ function ParkingPage() {
         <nav className="d-flex flex-column">
           <div className="d-flex flex-column">
             <Link to="/FindCarA">
-              <button className="e-button" type="primary">Ａ區(餘{data.A})</button>
+              <button className="e-button" type="primary">
+                Ａ區(餘{data.A})
+              </button>
+            </Link>
+            <Link to="/MapPageA">
+              <button className="e-button" type="primary">
+                導航到A區
+              </button>
             </Link>
             <Link to="/FindCarB">
-              <button className="e-button" type="primary">B區(餘{data.B})</button>
+              <button className="e-button" type="primary">
+                B區(餘{data.B})
+              </button>
+            </Link>
+            <Link to="/MapPageB">
+              <button className="e-button" type="primary">
+                導航到B區
+              </button>
             </Link>
             <Link to="/FindCarC">
-              <button className="e-button" type="primary">C區(餘{data.C})</button>
+              <button className="e-button" type="primary">
+                C區(餘{data.C})
+              </button>
+            </Link>
+            <Link to="/MapPageC">
+              <button className="e-button" type="primary">
+                導航到C區
+              </button>
             </Link>
             <Link to="/FindCarD">
-              <button className="e-button" type="primary">D區(餘{data.D})</button>
+              <button className="e-button" type="primary">
+                D區(餘{data.D})
+              </button>
+            </Link>
+            <Link to="/MapPageD">
+              <button className="e-button" type="primary">
+                導航到D區
+              </button>
             </Link>
           </div>
         </nav>
