@@ -3,15 +3,21 @@ import React, { useState, useEffect, Component } from "react";
 import { Link, Routes, Route, NavLink, HashRouter } from "react-router-dom";
 import "../../App.css";
 
-function FindCarPage() {
+function FindCarPage () {
 
-  const [data, setdata] = useState({
-		D_parking_lot: []
-	});
-
-  useEffect(() => {
-		// Using fetch to fetch the api from
-		// flask server it will be redirected to proxy
+    const [message, setMessage] = useState('');
+  
+    const [updated, setUpdated] = useState(message);
+  
+    const handleChange = (event) => {
+      setMessage(event.target.value);
+    };
+  
+    const handleClick = () => {
+      // 👇 "message" stores input field value
+      setUpdated(message);
+      
+    };
 
 		fetch("/my_car_parking_space/{target}").then((res) =>
 			res.json().then((data) => {
@@ -31,9 +37,7 @@ function FindCarPage() {
         <input type="text" className="form-control" placeholder="License plate number" aria-label="Recipient's username" aria-describedby="button-addon2" />
           <button className="btn btn-outline-secondary" type="button" id="button-addon2">Go!</button>
       </div>
-    </div>
-  );
-  
-}
+    );
+  }
 
 export default FindCarPage;

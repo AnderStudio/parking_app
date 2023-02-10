@@ -26,6 +26,20 @@ function CarReservePage() {
       return (<div>Loading...</div>);
     }
 
+    let lists = [];
+
+  for (let i = 0; i < cards.length; i += 1) {
+    lists.push(
+      <tr>
+        <th scope="row">{i+1}</th>
+        <td>{cards[i]["license_num"]}</td>
+        <td>{cards[i]["eff_start_time"]}</td>
+        <td>{cards[i]["eff_end_time"]}</td>
+        <td>{cards[i]["park_id"]}</td>
+      </tr>
+    )
+  }
+
   return (
     <div>
       <table className="table table-hover">
@@ -36,37 +50,11 @@ function CarReservePage() {
             <th scope="col">Start Time</th>
             <th scope="col">End Time</th>
             <th scope="col">Park ID</th>
+            
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>4158DR</td>
-            <td>2023/02/07 00:00</td>
-            <td>2023/02/07 23:59</td>
-            <td>A-007</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>4158DR</td>
-            <td>2023/02/07 00:00</td>
-            <td>2023/02/07 23:59</td>
-            <td>A-007</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>4158DR</td>
-            <td>2023/02/07 00:00</td>
-            <td>2023/02/07 23:59</td>
-            <td>A-007</td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>{cards[0]["license_num"]}</td>
-            <td>{cards[0]["eff_start_time"]}</td>
-            <td>{cards[0]["eff_end_time"]}</td>
-            <td>{cards[0]["park_id"]}</td>
-          </tr>
+          {lists}
         </tbody>
       </table>
     </div>

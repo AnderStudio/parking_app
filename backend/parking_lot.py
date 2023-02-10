@@ -123,10 +123,12 @@ def get_my_car_parking_space(target):
         print(target)
         # Do something with the results
         for row in result:
-            #print(row[5])
-            if row[3] != None:
-                print(type(row[3]))
+            print(str(row[1]) + ' ' + str(row[2]) + ' ' + str(row[3]) + ' ' + str(row[4]) + ' ' + str(row[5]))
+
+            #if row[3] != None:
+                #print(type(row[3]))
             if str(row[3]) == str(target):
+                print("Hello")
                 return ({
                     #"id": row[0],
                     "parking_lot": row[1],

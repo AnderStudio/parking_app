@@ -48,7 +48,7 @@ function App() {
     <div className="App">
       <header className="App-header d-flex flex-column justify-content-between">
         <Routes>
-          <Route path="/" element={<ParkingPage />}>
+          <Route exact = "true" path="/" element={<ParkingPage />}>
             {" "}
           </Route>
           <Route path="/FindCar" element={<FindCarPage />}>
@@ -81,14 +81,14 @@ function App() {
           <Route path="/MapPageC" element={<MapPageC />}>
             {" "}
           </Route>
-          <Route path="/MapPageD" element={<MapPageD />}>
+          <Route path="/MapPageD" element={<MapPageD /> }>
             {" "}
           </Route>
-          <Route exact="true" path="/LoginPage" element={<LoginPage />}>
+          <Route path="/LoginPage" element={<LoginPage /> }>
             {" "}
           </Route>
         </Routes>
-        <p>{data.name}</p>
+        
         <Footer className="align-self-stretch" />
       </header>
     </div>

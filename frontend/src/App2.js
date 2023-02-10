@@ -40,7 +40,7 @@ function App2() {
 		<div className="App">
 			<header className="App-header d-flex flex-column justify-content-between">
 				<Routes>
-					<Route exact="true" path="/" element={<CarUseHistoryPage />}> </Route>
+					<Route exact = "true" path="/" element={<CarUseHistoryPage />}> </Route>
 					<Route path="/CarEntry" element={<CarEntryRecordPage />}> </Route>
 					<Route path="/CarReserve" element={<CarReservePage />} > </Route>
 					<Route path="/BlackList" element={<BlackListPage />} > </Route>
