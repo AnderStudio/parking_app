@@ -57,6 +57,7 @@ function App() {
 					<Route path="/MapPage" element={<MapPage />}> </Route>
 					<Route exact="true" path="/LoginPage" element={<LoginPage />}> </Route>
 				</Routes>
+				<p>{data.name}</p>
 				<Footer className="align-self-stretch" />
 			</header>
 		</div>

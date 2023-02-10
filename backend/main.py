@@ -80,6 +80,10 @@ def create_parking(parking_info: Parking):
 def query_parking_spaces():
     return query_all_parking_spaces()
 
+@app.get("/A_parking_spaces")
+def query_A_parking_spaces():
+    return query_A_spaces()
+
 @app.get("/parking_remain_spaces")
 def query_remain_spaces():
     return get_remain_parking_spaces()
