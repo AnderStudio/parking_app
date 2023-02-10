@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const MapPage = () => {
+const MapPageD = () => {
   const [start, setStart] = useState("");
   const [destination, setDestination] = useState("");
   const [map, setMap] = useState(null);
@@ -9,8 +9,8 @@ const MapPage = () => {
 
   useEffect(() => {
     const map = new window.google.maps.Map(document.getElementById("map"), {
-      center: { lat: 37.7749, lng: -122.4194 },
-      zoom: 11,
+      center: { lat: 24.773249, lng: 121.012847 }, //24.76836177907555, 121.01459631223447
+      zoom: 9,
     });
     const directionsDisplay = new window.google.maps.DirectionsRenderer();
     const directionsService = new window.google.maps.DirectionsService();
@@ -73,7 +73,7 @@ const MapPage = () => {
   );
 };
 
-export default MapPage;
+export default MapPageD;
 
 /*
 // Importing modules
