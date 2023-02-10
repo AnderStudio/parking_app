@@ -62,12 +62,3 @@ def get_reservation_by_userid(userid):
         })
         
     return result
-
-
-
-
-
-
-
-
-

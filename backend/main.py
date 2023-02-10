@@ -8,6 +8,7 @@ from models import Parking
 from orm import query_all_parking, insert_parking
 from parking_lot import *
 from reservation import *
+from controller.ReservationPage import *
 
 import json
 
@@ -99,7 +100,14 @@ def query_D_parking_spaces():
 def query_remain_spaces():
     return get_remain_parking_spaces()
 
-# reservations
+# @app.get("/reservation/{userid}")
+# def query_reservation(userid: str):
+#     return get_reservation_by_userid(userid)
+
 @app.get("/reservation/{userid}")
 def query_reservation(userid: str):
-    return get_reservation_by_userid(userid)
+    return get_parking_lot_reservation(userid)
+
+@app.get("/reservation")
+def query_reservation_vip():
+    return get_parking_lot_reservation(2)
