@@ -1,15 +1,30 @@
 import React, { useState, useEffect } from "react";
 
 const MapPageA = () => {
-  const [start, setStart] = useState("");
-  const [destination, setDestination] = useState("24.773249, 121.012847");
+  const [start, setStart] = useState({});
+  const [destination, setDestination] = useState({
+    lat: 24.773231316311634,
+    lng: 121.01267742051924,
+  });
   const [map, setMap] = useState(null);
   const [directionsDisplay, setDirectionsDisplay] = useState(null);
   const [directionsService, setDirectionsService] = useState(null);
+  const [route, setRoute] = useState([]);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setStart({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const map = new window.google.maps.Map(document.getElementById("map"), {
-      center: { lat: 24.773249, lng: 121.012847 },
+      center: start,
       zoom: 9,
     });
     const directionsDisplay = new window.google.maps.DirectionsRenderer();
@@ -20,19 +35,12 @@ const MapPageA = () => {
     setDirectionsService(directionsService);
 
     directionsDisplay.setMap(map);
-
-    // 取得使用者的目前位置
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setStart(position.coords.latitude + ", " + position.coords.longitude);
-      },
-      (error) => console.error(error)
-    );
-  }, []);
+  }, [start]);
 
   useEffect(() => {
-    if (start === "") return;
-
+    if (!directionsService) {
+      return;
+    }
     directionsService.route(
       {
         origin: start,
@@ -41,17 +49,30 @@ const MapPageA = () => {
       },
       (response, status) => {
         if (status === "OK") {
+          setRoute(response.routes[0].legs[0].steps);
           directionsDisplay.setDirections(response);
         } else {
           console.error(`Directions request failed due to ${status}`);
         }
       }
     );
-  }, [start, destination, directionsService, directionsDisplay]);
+  }, [directionsService, start, destination]);
 
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
-      <div id="map" style={{ height: "100%", width: "100%" }} />
+    <div style={{ display: "flex" }}>
+      <div id="map" style={{ height: "100vh", width: "100%", flex: 1 }} />
+      <div
+        style={{ width: "300px", padding: "20px", backgroundColor: "white" }}
+      >
+        <h3>Route Details</h3>
+        <ul style={{ textAlign: "left" }}>
+          {route.map((step, index) => (
+            <li key={index}>
+              {step.instructions.replace(/(<([^>]+)>)/gi, "")}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

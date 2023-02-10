@@ -88,7 +88,7 @@ function App() {
             {" "}
           </Route>
         </Routes>
-        <p>{data.name}</p>
+        
         <Footer className="align-self-stretch" />
       </header>
     </div>
