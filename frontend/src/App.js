@@ -12,6 +12,7 @@ import ReservePage from './Component/ReservePage/ReservePage';
 import ReserveBookPage from './Component/ReserveBookPage/ReserveBookPage';
 import Footer from './Component/Footer/Footer';
 import MapPage from './Component/MapPage/MapPage';
+import LoginPage from './Component/LoginPage/LoginPage';
 
 
 function App() {
@@ -45,7 +46,7 @@ function App() {
 		<div className="App">
 			<header className="App-header d-flex flex-column justify-content-between">
 				<Routes>
-					<Route exact="true" path="/" element={<ParkingPage />}> </Route>
+					<Route path="/" element={<ParkingPage />}> </Route>
 					<Route path="/FindCar" element={<FindCarPage />}> </Route>
 					<Route path="/Reserve" element={<ReservePage />}> </Route>
 					<Route path="/FindCarA" element={<FindCarPageA />} > </Route>
@@ -54,10 +55,10 @@ function App() {
 					<Route path="/FindCarD" element={<FindCarPageD />} > </Route>
 					<Route path="/ReserveBook" element={<ReserveBookPage />}> </Route>
 					<Route path="/MapPage" element={<MapPage />}> </Route>
+					<Route exact="true" path="/LoginPage" element={<LoginPage />}> </Route>
 				</Routes>
-				<h2>Welcome!!!</h2>
+				<p>{data.name}</p>
 				<Footer className="align-self-stretch" />
-
 			</header>
 		</div>
 	);
