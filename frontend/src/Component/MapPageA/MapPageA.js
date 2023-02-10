@@ -7,7 +7,7 @@ const MapPageA = () => {
     lng: 121.01267742051924,
   });
   const [map, setMap] = useState(null);
-  const [directionsDisplay, setDirectionsDisplay] = useState(null);
+  const [directionsDisplay, setDirectionsDisplay] = useState(null); //setDirectionsDisplay(...)-> 設定 directionsDisplay
   const [directionsService, setDirectionsService] = useState(null);
   const [route, setRoute] = useState([]);
 

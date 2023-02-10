@@ -24,7 +24,7 @@ storage_client = storage.Client()
 def get_time():
 	# Returning an api for showing in reactjs
     r = {
-		'Name':"apple",
+		'Name':"MoeAI",
 		"Age":"22222222222222",
 		"Date":"kokwodwodkwokd",
 		"programming":"python"
@@ -107,6 +107,11 @@ def query_my_car_parking_spaces(target: str):
     return get_my_car_parking_space(target)
 
 # reservations
+@app.get("/reservation")
+def query_reservations():
+    return query_all_reservations()
+
+# reservations
 @app.get("/reservation/{userid}")
 def query_reservation(userid: str):
     return get_reservation_by_userid(userid)
@@ -122,10 +127,6 @@ def query_remain_spaces():
 @app.get("/reservation/{userid}")
 def query_reservation(userid: str):
     return get_parking_lot_reservation(userid)
-
-@app.get("/reservation")
-def query_reservation_vip():
-    return get_parking_lot_reservation(2)
 
 @app.get("/insert_reservation/{user_id}/{park_id}/{license_num}/{eff_start_time}/{eff_end_time}")
 def query_insert_reservations(user_id, park_id, license_num, eff_start_time, eff_end_time):

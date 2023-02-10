@@ -32,10 +32,10 @@ function CarReservePage() {
     lists.push(
       <tr>
         <th scope="row">{i+1}</th>
-        <td>{cards[i]["park_id"]}</td>
         <td>{cards[i]["license_num"]}</td>
         <td>{cards[i]["eff_start_time"]}</td>
         <td>{cards[i]["eff_end_time"]}</td>
+        <td>{cards[i]["park_id"]}</td>
       </tr>
     )
   }
@@ -46,10 +46,10 @@ function CarReservePage() {
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Park ID</th>
             <th scope="col">License Number</th>
             <th scope="col">Start Time</th>
             <th scope="col">End Time</th>
+            <th scope="col">Park ID</th>
             
           </tr>
         </thead>

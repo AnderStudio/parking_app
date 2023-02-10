@@ -44,12 +44,15 @@ def query_all_reservations():
     return r
 
 def get_reservation_by_userid(userid):
+    def get_parking_lot_by_id(park_id):
+        parking_lot = chr((int(park_id)//100)+65)
+        space_num = (int(park_id)% 4) + 1
+        return parking_lot + '-' + "{:03d}".format(space_num)
 
     res = query_all_reservations()
     reservation_df = pd.DataFrame.from_records(res)
-
     reservation = reservation_df.loc[(reservation_df["user_id"] == int(userid))]
-
+    
     result = []
     for index, r in reservation.iterrows():
         result.append({
@@ -57,8 +60,8 @@ def get_reservation_by_userid(userid):
             "user_id": r["user_id"],
             "park_id": r["park_id"],
             "license_num": r["license_num"],
-            "eff_start_time": r["eff_start_time"],
-            "eff_end_time": r["eff_end_time"]
+            "eff_start_time": str(r["eff_start_time"]),
+            "eff_end_time": str(r["eff_end_time"]),
+            "parking_space": get_parking_lot_by_id(str(r["park_id"]))
         })
-        
     return result
