@@ -8,7 +8,14 @@ from models import Parking
 from orm import query_all_parking, insert_parking
 from parking_lot import *
 
+import json
+
 app = FastAPI()
+
+origins = [
+    "http://localhost:5000",
+    "localhost:5000"
+]
 
 path = str(os.getcwd())
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = f'{path}/credential.json'
@@ -18,12 +25,13 @@ storage_client = storage.Client()
 @app.get('/data')
 def get_time():
 	# Returning an api for showing in reactjs
-	return {
+    r = {
 		'Name':"apple",
 		"Age":"22222222222222",
 		"Date":"kokwodwodkwokd",
 		"programming":"python"
 	}
+    return r
 
 @app.get("/")
 def hellp_world():
