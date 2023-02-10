@@ -4,6 +4,7 @@ from google.cloud.sql.connector import Connector
 import sqlalchemy
 import pymysql
 import pandas as pd
+from datetime import datetime
 
 # initialize Connector object
 connector = Connector()
@@ -33,13 +34,23 @@ def query_all_reservations():
 
         # Do something with the results
         for row in result:
+            row2 = ""
+            s = str(row[2]%100-1)
+            if int(row[2]/100) == 0:
+                row2 = "A-" + s.zfill(3)
+            elif int(row[2]/100) == 1:
+                row2 = "B-" + s.zfill(3)
+            elif int(row[2]/100) == 2:
+                row2 = "C-" + s.zfill(3)
+            elif int(row[2]/100) == 3:
+                row2 = "D-" + s.zfill(3)
             r.append({
                 "id": row[0],
                 "user_id": row[1],
-                "park_id": row[2],
+                "park_id": row2,
                 "license_num": row[3],
-                "eff_start_time": row[4],
-                "eff_end_time": row[5]
+                "eff_start_time": datetime.strftime(row[4],'%Y/%m/%d %H:%M'),
+                "eff_end_time": datetime.strftime(row[5],'%Y/%m/%d %H:%M')
             })
     return r
 
@@ -62,6 +73,35 @@ def get_reservation_by_userid(userid):
         })
         
     return result
+
+# insert into entry_records table
+def insert_reservations(user_id, park_id, license_num, eff_start_time, eff_end_time):
+    # insert statement
+    insert_stmt = sqlalchemy.text(
+        "INSERT INTO parking_app_db.reservations (user_id, park_id, license_num, eff_start_time, eff_end_time) "
+        + "VALUES (:user_id, :park_id, :license_num, :eff_start_time, :eff_end_time)")
+
+    with pool.connect() as db_conn:
+        db_conn.execute(
+            insert_stmt,
+            user_id = user_id,
+            park_id = park_id,
+            license_num = license_num,
+            eff_start_time = pd.to_datetime(eff_start_time),
+            eff_end_time = pd.to_datetime(eff_end_time)
+            )
+
+# delete from reservations table
+def delete_reservations(reservation_id):
+    # delete statement
+    delete_stmt = sqlalchemy.text(
+        "DELETE FROM parking_app_db.reservations WHERE id = :reservation_id")
+
+    with pool.connect() as db_conn:
+        db_conn.execute(
+            delete_stmt,
+            reservation_id = reservation_id
+            )
 
 
 
