@@ -55,7 +55,7 @@ function App() {
 					<Route path="/ReserveBook" element={<ReserveBookPage />}> </Route>
 					<Route path="/MapPage" element={<MapPage />}> </Route>
 				</Routes>
-				<p>{data.name}</p>
+				<h2>Welcome!!!</h2>
 				<Footer className="align-self-stretch" />
 
 			</header>
