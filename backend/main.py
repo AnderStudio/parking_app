@@ -122,3 +122,11 @@ def query_remain_spaces():
 @app.get("/reservation/{userid}")
 def query_reservation(userid: str):
     return get_parking_lot_reservation(userid)
+
+@app.get("/insert_reservation/{user_id}/{park_id}/{license_num}/{eff_start_time}/{eff_end_time}")
+def query_insert_reservations(user_id, park_id, license_num, eff_start_time, eff_end_time):
+    return insert_reservations(user_id, park_id, license_num, eff_start_time, eff_end_time)
+
+@app.get("/delete_reservation/{id}")
+def query_delete_reservations(id):
+    return delete_reservations(id)
