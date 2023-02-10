@@ -57,8 +57,7 @@ def get_reservation_by_userid(userid):
             "user_id": r["user_id"],
             "park_id": r["park_id"],
             "license_num": r["license_num"],
-            "eff_start_time": r["eff_start_time"],
-            "eff_end_time": r["eff_end_time"]
+            "eff_start_time": str(r["eff_start_time"]),
+            "eff_end_time": str(r["eff_end_time"])
         })
-        
     return result
