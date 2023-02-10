@@ -32,7 +32,6 @@ function FindCarSelectAPage() {
     if(data.A_parking_lot != null && data.A_parking_lot[i]["is_empty"] == true)
       empty_spaces += 1;
   }
-
   return (
     <div>
         <h1>A 區的車位剩餘{empty_spaces}</h1>

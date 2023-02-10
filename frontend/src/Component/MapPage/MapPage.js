@@ -1,3 +1,81 @@
+import React, { useState, useEffect } from "react";
+
+const MapPage = () => {
+  const [start, setStart] = useState("");
+  const [destination, setDestination] = useState("");
+  const [map, setMap] = useState(null);
+  const [directionsDisplay, setDirectionsDisplay] = useState(null);
+  const [directionsService, setDirectionsService] = useState(null);
+
+  useEffect(() => {
+    const map = new window.google.maps.Map(document.getElementById("map"), {
+      center: { lat: 37.7749, lng: -122.4194 },
+      zoom: 11,
+    });
+    const directionsDisplay = new window.google.maps.DirectionsRenderer();
+    const directionsService = new window.google.maps.DirectionsService();
+
+    setMap(map);
+    setDirectionsDisplay(directionsDisplay);
+    setDirectionsService(directionsService);
+
+    directionsDisplay.setMap(map);
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    directionsService.route(
+      {
+        origin: start,
+        destination: destination,
+        travelMode: "DRIVING",
+      },
+      (response, status) => {
+        if (status === "OK") {
+          directionsDisplay.setDirections(response);
+        } else {
+          console.error(`Directions request failed due to ${status}`);
+        }
+      }
+    );
+  };
+
+  return (
+    <div style={{ height: "100vh", width: "100%" }}>
+      <div id="map" style={{ height: "100%", width: "100%" }} />
+      <form onSubmit={handleSubmit}>
+        <div>你好</div>
+        <div>你好</div>
+        <div>你好</div>
+        <label>
+          起點：
+          <input
+            type="text"
+            value={start}
+            onChange={(e) => setStart(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          目的地：
+          <input
+            type="text"
+            value={destination}
+            onChange={(e) => setDestination(e.target.value)}
+          />
+        </label>
+        <br />
+        <button onClick={handleSubmit} type="submit">
+          開始導航
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default MapPage;
+
+/*
 // Importing modules
 import React, { useState, useEffect, Component } from "react";
 import { Link, Routes, Route, NavLink, HashRouter } from "react-router-dom";
@@ -53,3 +131,4 @@ class MapPage extends Component {
 }
 
 export default MapPage;
+*/
