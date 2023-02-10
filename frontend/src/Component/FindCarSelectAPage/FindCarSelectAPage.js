@@ -52,7 +52,7 @@ function FindCarSelectAPage() {
   return (
     <div>
       <h1>A 區的車位剩餘{empty_spaces}</h1>
-      <h1>A-{data.A_parking_lot[0]["id"]} 車位狀態: {data.A_parking_lot[0]["is_empty"]}</h1>
+      
       <div className='d-flex flex-row flex-wrap border-4 min-vw-100'>
         {lists}
       </div>

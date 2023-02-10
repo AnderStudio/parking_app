@@ -1,6 +1,7 @@
 // Importing modules
 import React, { useState, useEffect, Component} from "react";
 import "../../App.css";
+import classNames from "classnames";
 
 function FindCarSelectDPage() {
   
@@ -32,10 +33,26 @@ function FindCarSelectDPage() {
     if(data.D_parking_lot[i]["is_empty"] == true)
       empty_spaces += 1;
   }
+  const isBackgroundRed = true;
+  let lists = [];
+
+  for (let i = 0; i < 100; i += 4) {
+    lists.push(
+      
+      <div className="d-flex flex-row vw-100 justify-content-around" key={i}>
+        <div className={classNames("border border-3 w-25 m-3", data.D_parking_lot[i]['is_empty'] == true ? 'background-green' : 'background-red')} key={i} >D-{i}</div>
+        <div className={classNames("border border-3 w-25 m-3", data.D_parking_lot[i+1]['is_empty'] == true ? 'background-green' : 'background-red')} key={i+1} >D-{i+1}</div>
+        <div className={classNames("border border-3 w-25 m-3", data.D_parking_lot[i+2]['is_empty'] == true ? 'background-green' : 'background-red')} key={i+2} >D-{i+2}</div>
+        <div className={classNames("border border-3 w-25 m-3", data.D_parking_lot[i+3]['is_empty'] == true ? 'background-green' : 'background-red')} key={i+3} >D-{i+3}</div>
+      </div>
+    )
+  }
   return (
     <div>
         <h1>D 區的車位剩餘{empty_spaces}</h1>
-        <h1>D-{data.D_parking_lot[0]["id"]} 車位狀態: {data.D_parking_lot[0]["is_empty"]}</h1>
+        <div className='d-flex flex-row flex-wrap border-4 min-vw-100'>
+        {lists}
+      </div>
     </div>
   );  
 

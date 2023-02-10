@@ -1,43 +1,63 @@
 // Importing modules
-import React, { useState, useEffect, Component} from "react";
+import React, { useState, useEffect, Component } from "react";
 import "../../App.css";
+import classNames from "classnames";
 
 function FindCarSelectBPage() {
-  
+
   const [data, setdata] = useState({
-		B_parking_lot: []
-	});
+    B_parking_lot: []
+  });
 
   useEffect(() => {
-		// Using fetch to fetch the api from
-		// flask server it will be redirected to proxy
+    // Using fetch to fetch the api from
+    // flask server it will be redirected to proxy
 
-		fetch("/B_parking_spaces").then((res) =>
-			res.json().then((data) => {
-				// Setting a data from api
-				setdata({
-					B_parking_lot: data.B
-				})
-			})
+    fetch("/B_parking_spaces").then((res) =>
+      res.json().then((data) => {
+        // Setting a data from api
+        setdata({
+          B_parking_lot: data.B
+        })
+      })
     );
-	}, []);
+  }, []);
 
-  if(data.B_parking_lot == false){
+  if (data.B_parking_lot == false) {
     return (<div>Loading...</div>);
   }
   console.log(data.B_parking_lot[99]);
-  
+
   var empty_spaces = 0;
-  for(let i = 0; i < 100; i++){
-    if(data.B_parking_lot[i]["is_empty"] == true)
+  for (let i = 0; i < 100; i++) {
+    if (data.B_parking_lot[i]["is_empty"] == true)
       empty_spaces += 1;
   }
+
+  const isBackgroundRed = true;
+  let lists = [];
+
+  for (let i = 0; i < 100; i += 4) {
+    lists.push(
+
+      <div className="d-flex flex-row vw-100 justify-content-around" key={i}>
+        <div className={classNames("border border-3 w-25 m-3", data.B_parking_lot[i]['is_empty'] == true ? 'background-green' : 'background-red')} key={i} >B-{i}</div>
+        <div className={classNames("border border-3 w-25 m-3", data.B_parking_lot[i + 1]['is_empty'] == true ? 'background-green' : 'background-red')} key={i + 1} >B-{i + 1}</div>
+        <div className={classNames("border border-3 w-25 m-3", data.B_parking_lot[i + 2]['is_empty'] == true ? 'background-green' : 'background-red')} key={i + 2} >B-{i + 2}</div>
+        <div className={classNames("border border-3 w-25 m-3", data.B_parking_lot[i + 3]['is_empty'] == true ? 'background-green' : 'background-red')} key={i + 3} >B-{i + 3}</div>
+      </div>
+    )
+  }
+
   return (
     <div>
-        <h1>B 區的車位剩餘{empty_spaces}</h1>
-        <h1>B-{data.B_parking_lot[0]["id"]} 車位狀態: {data.B_parking_lot[0]["is_empty"]}</h1>
+      <h1>B 區的車位剩餘{empty_spaces}</h1>
+
+      <div className='d-flex flex-row flex-wrap border-4 min-vw-100'>
+        {lists}
+      </div>
     </div>
-  );  
+  );
 
 }
 
