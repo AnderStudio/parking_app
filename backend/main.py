@@ -6,7 +6,7 @@ from google.cloud import storage
 from google.cloud import vision
 from models import Parking
 from orm import query_all_parking, insert_parking
-from parking_lot import query_all_parking_spaces
+from parking_lot import *
 
 app = FastAPI()
 
@@ -71,3 +71,7 @@ def create_parking(parking_info: Parking):
 @app.get("/parking_spaces")
 def query_parking_spaces():
     return query_all_parking_spaces()
+
+@app.get("/parking_remain_spaces")
+def query_remain_spaces():
+    return get_remain_parking_spaces()

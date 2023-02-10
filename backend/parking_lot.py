@@ -3,7 +3,7 @@
 from google.cloud.sql.connector import Connector
 import sqlalchemy
 import pymysql
-
+import pandas as pd
 
 # initialize Connector object
 connector = Connector()
@@ -42,3 +42,16 @@ def query_all_parking_spaces():
                 "is_empty": row[5]
             })
     return r
+
+def get_remain_parking_spaces():
+    
+    res = query_all_parking_spaces()
+    parking_lot_df = pd.DataFrame.from_records(res)
+
+    remain_A_spaces = len(parking_lot_df.loc[(parking_lot_df["parking_lot"] == "A") & (parking_lot_df["is_empty"] == True)])
+    remain_B_spaces = len(parking_lot_df.loc[(parking_lot_df["parking_lot"] == "B") & (parking_lot_df["is_empty"] == True)])
+    remain_C_spaces = len(parking_lot_df.loc[(parking_lot_df["parking_lot"] == "C") & (parking_lot_df["is_empty"] == True)])
+    remain_D_spaces = len(parking_lot_df.loc[(parking_lot_df["parking_lot"] == "D") & (parking_lot_df["is_empty"] == True)])
+    parking_lot_list = [{"A": remain_A_spaces, "B": remain_B_spaces, "C": remain_C_spaces, "D": remain_D_spaces}]
+
+    return parking_lot_list
