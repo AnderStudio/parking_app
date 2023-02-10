@@ -60,11 +60,12 @@ import ReserveCardList from './ReserveCardList';
 
 const ReservePage = () => {
   const [cards, setCards] = useState([]);
+  const user_id = 2
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('/reservation');
+        const response = await fetch(`/reservation/${user_id}`);
         const data = await response.json();
         console.log(data);
         setCards(data);
@@ -81,8 +82,12 @@ const ReservePage = () => {
 
   console.log(cards);
 
+  if (cards == false) {
+    return (<div>Loading...</div>);
+  }
+
   return (
-    <div>
+    <div className="container">
       <ReserveCardList cards={cards} />
     </div>
   );

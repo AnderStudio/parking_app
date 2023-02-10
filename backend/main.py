@@ -107,7 +107,3 @@ def query_remain_spaces():
 @app.get("/reservation/{userid}")
 def query_reservation(userid: str):
     return get_parking_lot_reservation(userid)
-
-@app.get("/reservation")
-def query_reservation_vip():
-    return get_parking_lot_reservation(2)
