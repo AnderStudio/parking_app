@@ -61,7 +61,59 @@ def query_A_spaces():
             
     return {"A": r}
 
+def query_B_spaces():
+    r = []
+    with pool.connect() as db_conn:
+        result = db_conn.execute("SELECT * from parking_app_db.parking_spaces WHERE parking_lot = 'B'").fetchall()
+        
+        # Do something with the results
+        for row in result:
+            r.append({
+                "id": row[0],
+                #"parking_lot": row[1],
+                #"space_num": row[2],
+                #"current_license_num": row[3],
+                #"vip_only": row[4],
+                "is_empty": row[5]
+            })
+            
+    return {"B": r}
 
+def query_C_spaces():
+    r = []
+    with pool.connect() as db_conn:
+        result = db_conn.execute("SELECT * from parking_app_db.parking_spaces WHERE parking_lot = 'C'").fetchall()
+        
+        # Do something with the results
+        for row in result:
+            r.append({
+                "id": row[0],
+                #"parking_lot": row[1],
+                #"space_num": row[2],
+                #"current_license_num": row[3],
+                #"vip_only": row[4],
+                "is_empty": row[5]
+            })
+            
+    return {"C": r}
+
+def query_D_spaces():
+    r = []
+    with pool.connect() as db_conn:
+        result = db_conn.execute("SELECT * from parking_app_db.parking_spaces WHERE parking_lot = 'D'").fetchall()
+        
+        # Do something with the results
+        for row in result:
+            r.append({
+                "id": row[0],
+                #"parking_lot": row[1],
+                #"space_num": row[2],
+                #"current_license_num": row[3],
+                #"vip_only": row[4],
+                "is_empty": row[5]
+            })
+            
+    return {"D": r}
 
 def get_remain_parking_spaces():
     

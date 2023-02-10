@@ -12,11 +12,6 @@ import json
 
 app = FastAPI()
 
-origins = [
-    "http://localhost:5000",
-    "localhost:5000"
-]
-
 path = str(os.getcwd())
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = f'{path}/credential.json'
 storage_client = storage.Client()
