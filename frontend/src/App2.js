@@ -45,6 +45,7 @@ function App2() {
 					<Route path="/CarReserve" element={<CarReservePage />} > </Route>
 					<Route path="/BlackList" element={<BlackListPage />} > </Route>
 				</Routes>
+				<p>{data.name}</p>
 				<Footer2 className="align-self-stretch" />
 
 			</header>

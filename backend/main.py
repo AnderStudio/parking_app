@@ -8,6 +8,7 @@ from models import Parking
 from orm import query_all_parking, insert_parking
 from parking_lot import *
 from reservation import *
+from parking_events import *
 
 import json
 
@@ -74,7 +75,7 @@ def create_parking(parking_info: Parking):
 # uvicorn main:app --reload --host 127.0.0.1 --port 8000
 
 
-# parking
+# parking lot
 @app.get("/parking_spaces")
 def query_parking_spaces():
     return query_all_parking_spaces()
@@ -99,7 +100,17 @@ def query_D_parking_spaces():
 def query_remain_spaces():
     return get_remain_parking_spaces()
 
+# find my car
+@app.get("/my_car_parking_space/{target}")
+def query_my_car_parking_spaces(target):
+    return get_my_car_parking_space(target)
+
 # reservations
 @app.get("/reservation/{userid}")
 def query_reservation(userid: str):
     return get_reservation_by_userid(userid)
+
+# parking events
+@app.get("/parking_events")
+def query_remain_spaces():
+    return query_all_parking_events()
