@@ -20,7 +20,7 @@ module.exports = function(app) {
       secure: false,
     })
   );
-  /*
+  
   app.use(
     '/my_car_parking_space/:target',
     createProxyMiddleware({
@@ -32,5 +32,5 @@ module.exports = function(app) {
       }
     })
   );
-  */
+  
 };
