@@ -65,7 +65,7 @@ const MapPageA = () => {
         style={{ width: "300px", padding: "20px", backgroundColor: "white" }}
       >
         <h3>Route Details</h3>
-        <ul>
+        <ul style={{ textAlign: "left" }}>
           {route.map((step, index) => (
             <li key={index}>
               {step.instructions.replace(/(<([^>]+)>)/gi, "")}
