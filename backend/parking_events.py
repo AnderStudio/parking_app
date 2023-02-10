@@ -4,6 +4,7 @@ from google.cloud.sql.connector import Connector
 import sqlalchemy
 import pymysql
 import pandas as pd
+from datetime import datetime
 
 # initialize Connector object
 connector = Connector()
@@ -48,7 +49,7 @@ def query_all_parking_events():
                 "id": row[0],
                 "parking_space_id": row1,
                 "license_num": row[2],
-                "start_time": row[3],
-                "end_time": row[4]
+                "start_time": datetime.strftime(row[3],'%Y/%m/%d %H:%M'),
+                "end_time": datetime.strftime(row[4],'%Y/%m/%d %H:%M')
             })
     return r
