@@ -63,6 +63,35 @@ def get_reservation_by_userid(userid):
         
     return result
 
+# insert into entry_records table
+def insert_reservations(user_id, park_id, license_num, eff_start_time, eff_end_time):
+    # insert statement
+    insert_stmt = sqlalchemy.text(
+        "INSERT INTO parking_app_db.reservations (user_id, park_id, license_num, eff_start_time, eff_end_time) "
+        + "VALUES (:user_id, :park_id, :license_num, :eff_start_time, :eff_end_time)")
+
+    with pool.connect() as db_conn:
+        db_conn.execute(
+            insert_stmt,
+            user_id = user_id,
+            park_id = park_id,
+            license_num = license_num,
+            eff_start_time = pd.to_datetime(eff_start_time),
+            eff_end_time = pd.to_datetime(eff_end_time)
+            )
+
+# delete from reservations table
+def delete_reservations(reservation_id):
+    # delete statement
+    delete_stmt = sqlalchemy.text(
+        "DELETE FROM parking_app_db.reservations WHERE id = :reservation_id")
+
+    with pool.connect() as db_conn:
+        db_conn.execute(
+            delete_stmt,
+            reservation_id = reservation_id
+            )
+
 
 
 
