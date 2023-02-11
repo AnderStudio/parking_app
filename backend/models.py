@@ -12,7 +12,7 @@ class Parking(BaseModel):
 
 class Reservation(BaseModel):
     user_id: str
-    park_id: str
+    parking_lot: str
     license_num: str
     eff_start_time: str
     eff_end_time: str

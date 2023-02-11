@@ -9,7 +9,7 @@ class ReserveBookPage extends Component {
     license_num: "",
     parking_lot: "",
     start_time: new Date(),
-    end_tiem: new Date()
+    end_time: new Date()
   };
 
   handleLicenseChange = event => {
@@ -31,11 +31,6 @@ class ReserveBookPage extends Component {
   // }
 
   async sendDataToBackend(data) {
-    var user_id = 2;
-    var park_id = 6;
-    var license_num = "06AAAA"
-    var eff_start_time = "2023-02-21 19:36:00"
-    var eff_end_time = "2023-02-22 19:40:00"
     const response = await fetch("/insert_reservation", {
       method: 'POST',
       headers: {
@@ -49,19 +44,26 @@ class ReserveBookPage extends Component {
     }
     const json = await response.json();
     console.log(json);
+    if (json.result === "blacklist"){
+      console.log("in blacklist");
+    }
+    if (json.result === "full"){
+      console.log("目前車位已滿");
+    }
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
-    var fake_data = {
-      user_id: "2",
-      park_id: "9",
-      license_num: "07bbbb",
-      eff_start_time: "2023-02-21 19:36:00",
-      eff_end_time: "2023-02-23 19:36:00"
+    // console.log(this.state);
+    var data = {
+      user_id: 2,
+      parking_lot: this.state.parking_lot,
+      license_num: this.state.license_num,
+      eff_start_time: this.state.start_time,
+      eff_end_time: this.state.end_time
     }
-    this.sendDataToBackend(fake_data)
+    console.log(data)
+    this.sendDataToBackend(data)
   };
 
   render() {
@@ -89,21 +91,21 @@ class ReserveBookPage extends Component {
 
         <div className="mx-5 my-5">
           <form action="/action_page.php">
-            <label>預計自</label>
+            <label>預計自 </label>
             <input type="datetime-local" id="starttime" name="starttime" value={this.state.start_time} onChange={this.handleStartTimeChange}/>
           </form>
         </div>
 
         <div className="mx-5 my-5">
           <form action="/action_page.php">
-            <label>停放至</label>
+            <label>停放至 </label>
             <input type="datetime-local" id="endtime" name="endtime" value={this.state.end_time} onChange={this.handleEndTimeChange}/>
           </form>
         </div>
 
         <div className="d-flex flex-column mx-5 my-5">
             <Link onClick={this.handleSubmit} to="/Reserve" style={{display: 'contents'}}>
-              <button className="btn btn-danger btn-lg" type="primary">確認</button>
+              <button className="btn btn-lg mx-3 my-3 btn-outline-dark" type="primary">確認</button>
             </Link>
         </div>
       </div>

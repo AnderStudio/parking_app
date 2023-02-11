@@ -152,11 +152,33 @@ def create_parking(parking_info: Parking):
 
 @app.post("/insert_reservation")
 def post_insert_reservation(reservation: Reservation):
+
+    # if in blacklist, return 'fail'
+
+    # if no space return 'full'
+    
+    # space available return a park id
+    park_id = 10
     # 使用解析的資料
     insert_reservations(
         reservation.user_id,
-        reservation.park_id,
+        park_id,
         reservation.license_num,
         reservation.eff_start_time,
-        reservation.eff_end_time)
+        reservation.eff_end_time
+    )
     return {"result": "success"}
+
+# check if in black list
+def is_blacklist(license_num, start_time, end_time):
+    # get all data of the blacklist of the car
+    # check if time is available
+    return False
+
+# get available park
+def space_available(start_time, end_time):
+    # get reservation datas of parking lot a
+    # find the conflict car space
+    # find the first available car space
+    park_id = 10
+    return park_id
