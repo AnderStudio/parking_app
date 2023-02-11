@@ -6,7 +6,7 @@ import "../../App.css";
 function Footer() {
   return (
     <nav className="nav">
-      <div className= "py-1 text-bg-dark footer">
+      <div className= "py-1 text-bg-dark footer footer_color">
         <div className="container">
           <div className="d-flex align-items-start justify-content-around">
             <ul className="nav col-12 col-lg-auto my-2 d-flex flex-row justify-content-around my-md-0 text-small nav-list w-100">

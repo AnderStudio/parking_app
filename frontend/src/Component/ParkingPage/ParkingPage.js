@@ -30,54 +30,54 @@ function ParkingPage() {
   //console.log(data.A);
   return (
     <div>
-      <h1>Parking</h1>
+      <h1 className="mt-5">車位剩餘數量與導航</h1>
       <nav className="d-flex flex-column">
         <div className="d-flex flex-column align-items-center justify-content-between">
-          <div className="d-flex vw-100 justify-content-center pb-5 pt-5">
+          <div className="d-flex vw-100 justify-content-center pb-5 pt-5 mt-5">
             <Link to="/FindCarA">
-              <button className="btn btn-outline-dark" type="primary"  style={{width: "400px", height: "50px", fontSize: "26px"}}>
-                Ａ區(餘{data.A})
+              <button className="rounded-lg btn btn1 white-text1" type="primary"  style={{width: "400px", height: "50px", fontSize: "26px"}}>
+              <p>Ａ區  (餘{data.A})</p>
               </button>
             </Link>
             <Link to="/MapPageA">
-              <button className="btn btn-outline-success" type="primary" style={{height: "50px", fontSize: "26px"}}>
-                導航到A區
+              <button className="rounded-lg btn btn2 white-text" type="primary" style={{height: "50px", fontSize: "26px"}}>
+              <p>導航到A區</p>
               </button>
             </Link>
           </div>
           <div className="d-flex vw-100 justify-content-center pb-5">
             <Link to="/FindCarB">
-              <button className="btn btn-outline-dark" type="primary" style={{width: "400px", height: "50px", fontSize: "26px"}}>
-                B區(餘{data.B})
+              <button className="rounded-lg btn btn1 white-text1" type="primary" style={{width: "400px", height: "50px", fontSize: "26px"}}>
+              <p>B區  (餘{data.B})</p>
               </button>
             </Link>
             <Link to="/MapPageB">
-              <button className="btn btn-outline-success" type="primary" style={{height: "50px", fontSize: "26px"}}>
-                導航到B區
+              <button className="rounded-lg btn btn2 white-text" type="primary" style={{height: "50px", fontSize: "26px"}}>
+              <p>導航到B區</p>
               </button>
             </Link>
           </div>
           <div className="d-flex vw-100 justify-content-center pb-5">
             <Link to="/FindCarC">
-              <button className="btn btn-outline-dark" type="primary" style={{width: "400px", height: "50px", fontSize: "26px"}}>
-                C區(餘{data.C})
+              <button className="rounded-lg btn btn1 white-text1" type="primary" style={{width: "400px", height: "50px", fontSize: "26px"}}>
+              <p>C區  (餘{data.C})</p>
               </button>
             </Link>
             <Link to="/MapPageC">
-              <button className="btn btn-outline-success" type="primary" style={{height: "50px", fontSize: "26px"}}>
-                導航到C區
+              <button className="rounded-lg btn btn2 white-text" type="primary" style={{height: "50px", fontSize: "26px"}}>
+              <p>導航到C區</p>
               </button>
             </Link>
           </div>
           <div className="d-flex vw-100 justify-content-center pb-5">
             <Link to="/FindCarD">
-              <button className="btn btn-outline-dark" type="primary" style={{width: "400px", height: "50px", fontSize: "26px"}}>
-                D區(餘{data.D})
+              <button className="rounded-lg btn btn1 white-text1" type="primary" style={{width: "400px", height: "50px", fontSize: "26px"}}>
+              <p>D區  (餘{data.D})</p>
               </button>
             </Link>
             <Link to="/MapPageD">
-              <button className="btn btn-outline-success" type="primary" style={{height: "50px", fontSize: "26px"}}>
-                導航到D區
+              <button className="rounded-lg btn btn2 white-text" type="primary" style={{height: "50px", fontSize: "26px"}}>
+                <p>導航到D區</p>
               </button>
             </Link>
           </div>

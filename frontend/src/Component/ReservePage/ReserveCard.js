@@ -14,7 +14,7 @@ const ReserveCard = (props) => {
     return (
         <div className="mx-3 my-3">
             <div className="card text-center">
-                <div className="card-header d-flex justify-content-between">
+                <div className="card-header d-flex justify-content-between btn2 white-text2">
                     車位：{props.parking_space}
                     <button onClick={handleDeleteClick} type="button" className="btn-close float-end" aria-label="Close"></button>
                 </div>
