@@ -8,3 +8,11 @@ class Parking(BaseModel):
     parking_number: str
     license_plate: Optional[str] = None
     is_available: Optional[bool] = None
+
+
+class Reservation(BaseModel):
+    user_id: str
+    park_id: str
+    license_num: str
+    eff_start_time: str
+    eff_end_time: str

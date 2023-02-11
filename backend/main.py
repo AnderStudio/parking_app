@@ -1,10 +1,10 @@
 import os
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Response
 
 from google.cloud import storage
 from google.cloud import vision
-from models import Parking
+from models import Parking, Reservation
 from orm import query_all_parking, insert_parking
 from parking_lot import *
 from reservation import *
@@ -130,8 +130,33 @@ def query_reservation(userid: str):
 
 @app.get("/insert_reservation/{user_id}/{park_id}/{license_num}/{eff_start_time}/{eff_end_time}")
 def query_insert_reservations(user_id, park_id, license_num, eff_start_time, eff_end_time):
-    return insert_reservations(user_id, park_id, license_num, eff_start_time, eff_end_time)
+    insert_reservations(user_id, park_id, license_num, eff_start_time, eff_end_time)
+    print(user_id, park_id, license_num, eff_start_time, eff_end_time)
+    return {"result": "ok"}
 
 @app.get("/delete_reservation/{id}")
 def query_delete_reservations(id):
     return delete_reservations(id)
+
+
+@app.post("/parking")
+def create_parking(parking_info: Parking):
+    insert_parking(
+        parking_info.floor,
+        parking_info.zone,
+        parking_info.parking_number,
+        parking_info.license_plate
+    )
+    return {"result": "success"}
+
+
+@app.post("/insert_reservation")
+def post_insert_reservation(reservation: Reservation):
+    # 使用解析的資料
+    insert_reservations(
+        reservation.user_id,
+        reservation.park_id,
+        reservation.license_num,
+        reservation.eff_start_time,
+        reservation.eff_end_time)
+    return {"result": "success"}

@@ -5,7 +5,7 @@ module.exports = function(app) {
     ['/parking_remain_spaces', '/parking_spaces', '/data',
       "/A_parking_spaces", "/B_parking_spaces", "/C_parking_spaces", "/D_parking_spaces",
       "/parking_events",
-      "/reservation/:id","/delete_reservation/:id", "/reservation"
+      "/reservation/:id","/delete_reservation/:id", "/insert_reservation"
     ],
     createProxyMiddleware({
       target: 'http://127.0.0.1:8000',
